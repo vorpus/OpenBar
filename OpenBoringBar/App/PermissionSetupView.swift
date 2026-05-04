@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PermissionSetupView: View {
     @EnvironmentObject private var permissionManager: PermissionManager
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ScrollView(.vertical) {
@@ -161,9 +162,9 @@ struct PermissionSetupView: View {
 
             Button("continue") {
                 permissionManager.completeSetupIfPossible()
+                dismiss()
             }
             .buttonStyle(SetupButtonStyle(isPrimary: true))
-            .disabled(!permissionManager.allGranted)
         }
     }
 

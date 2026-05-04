@@ -30,17 +30,12 @@ struct DisplayBottomBarView: View {
         ZStack {
             Rectangle()
                 .fill(.ultraThinMaterial)
-                .overlay(
-                    Rectangle()
-                        .stroke(Color.white.opacity(0.55), lineWidth: 1)
-                )
 
             HStack(spacing: 8) {
-// Pseudo-requirement: users can already open the app they want with Command + Space, so we shouldn’t blindly copy BoringBar wholesale.
-//                applicationLauncherButton
-//
-//                Divider()
-//                    .padding(.vertical, 9)
+                applicationLauncherButton
+
+                Divider()
+                    .padding(.vertical, 9)
 
                 Group {
                     if apps.isEmpty {
@@ -97,8 +92,11 @@ struct DisplayBottomBarView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onHover(perform: onBarHoverChanged)
         .contextMenu {
-            Button(action: onRequestQuit) {
-                Label("Quit", systemImage: "xmark.circle")
+            Button {
+                NSApp.activate(ignoringOtherApps: true)
+                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            } label: {
+                Label("Permissions...", systemImage: "gear")
             }
 
             Toggle(
@@ -108,6 +106,12 @@ struct DisplayBottomBarView: View {
                     set: onAutoCollapseToggled
                 )
             )
+
+            Divider()
+
+            Button(action: onRequestQuit) {
+                Label("Quit", systemImage: "xmark.circle")
+            }
         }
     }
 
