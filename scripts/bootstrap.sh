@@ -7,7 +7,7 @@ cd "$ROOT_DIR"
 mkdir -p "$ROOT_DIR/.home"
 export HOME="$ROOT_DIR/.home"
 
-echo "==> 1/2 pod install (自动生成 Xcode 工程 + workspace)"
+echo "==> 1/2 pod install (auto-generates Xcode project + workspace)"
 pod install
 
 echo "==> 2/2 xcodebuild (Debug/macOS)"

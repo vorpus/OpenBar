@@ -39,7 +39,7 @@ struct DisplayBottomBarView: View {
 
                 Group {
                     if apps.isEmpty {
-                        Text("该显示器暂无可见窗口")
+                        Text("No visible windows on this display")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundStyle(.secondary)
                             .frame(maxWidth: .infinity, alignment: .leading)
