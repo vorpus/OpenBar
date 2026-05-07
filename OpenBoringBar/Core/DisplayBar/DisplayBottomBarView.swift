@@ -32,10 +32,11 @@ struct DisplayBottomBarView: View {
                 .fill(.ultraThinMaterial)
 
             HStack(spacing: 8) {
-                applicationLauncherButton
-
-                Divider()
-                    .padding(.vertical, 9)
+// Removed: launcher is redundant with Command+Space.
+//                applicationLauncherButton
+//
+//                Divider()
+//                    .padding(.vertical, 9)
 
                 Group {
                     if apps.isEmpty {
